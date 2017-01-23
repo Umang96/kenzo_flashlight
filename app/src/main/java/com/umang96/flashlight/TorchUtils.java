@@ -5,9 +5,6 @@ import android.widget.Toast;
 
 import java.io.DataOutputStream;
 
-/**
- * Created by Hicham on 23/01/2017.
- */
 
 public class TorchUtils {
 

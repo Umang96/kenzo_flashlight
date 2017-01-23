@@ -10,4 +10,21 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.umang96.flashlight.MainActivity">
 
+    <Button
+        android:text="Toggle Flashlight"
+        android:layout_width="fill_parent"
+        android:layout_height="300dp"
+        android:id="@+id/button1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Contributors (xda usernames) -\nUmang96\nShayanism\nhichaam\n\nYou may use this as normal torch app or you can also use it as a tile in android quicksettings.\n\nAs of now, this app is only for Redmi Note 3 (kenzo).\nThis is not supposed to work on other devices."
+        android:textSize="13dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:layout_below="@+id/button1"
+        android:layout_marginTop="12dp"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
