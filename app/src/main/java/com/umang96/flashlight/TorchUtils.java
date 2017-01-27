@@ -3,7 +3,9 @@ package com.umang96.flashlight;
 import android.content.Context;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.InputStreamReader;
 
 
 public class TorchUtils {
@@ -19,24 +21,44 @@ public class TorchUtils {
     }
 
     public static boolean check(Context context){
-        ShellExecutor exe = new ShellExecutor();
-        String outp = exe.Executor("cat ~/sys/class/leds/led:torch_0/brightness");
-        int x = Integer.parseInt(outp);
-        if(x==0)
-        {
-            flash_on(context);
-            return true;
+        String outp = Executor("cat ~/sys/class/leds/led:torch_0/brightness");
+        try {
+            int x = Integer.parseInt(outp);
+            if (x < 1) {
+                flash_on(context);
+                return true;
+            }
+            if (x > 1) {
+                flash_off(context);
+            }
         }
-        if(x==100)
+        catch(Exception e)
         {
-            flash_off(context);
+            Toast.makeText(context, "Error, have you granted root ?",
+                    Toast.LENGTH_SHORT).show();
         }
         return false;
     }
 
+    public static String Executor(String command) {
+        StringBuffer output = new StringBuffer();
+        Process p;
+        try {
+            p = Runtime.getRuntime().exec(new String[] { "su", "-c", command });
+            BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            String line = "";
+            while ((line = reader.readLine())!= null) {
+                output.append(line);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String response = output.toString();
+        return response;
+
+    }
+
     public static void RunAsRoot(String[] cmds, Context context){
-       /* Toast.makeText(getApplicationContext(), "RunAsRoot begins !",
-                Toast.LENGTH_SHORT).show(); */
         try{
             Process p = Runtime.getRuntime().exec("su");
             DataOutputStream os = new DataOutputStream(p.getOutputStream());

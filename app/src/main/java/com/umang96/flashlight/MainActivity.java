@@ -12,9 +12,9 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        new ShellExecutor().Executor("");// ask for root right
         addButtonClickListener1();
+        TorchUtils ob = new TorchUtils();
+        ob.Executor("");
     }
 
     private void addButtonClickListener1() {

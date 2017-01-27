@@ -27,7 +27,6 @@ public class TorchTileService extends TileService {
         String newLabel = getString(R.string.tile_label);
         int newState = Tile.STATE_ACTIVE;
 
-        // Change the tile to match the service status.
         if (isActive) {
 
             newIcon = Icon.createWithResource(getApplicationContext(),
@@ -42,12 +41,9 @@ public class TorchTileService extends TileService {
 
         }
 
-        // Change the UI of the tile.
         tile.setLabel(newLabel);
         tile.setIcon(newIcon);
         tile.setState(newState);
-
-        // Need to call updateTile for the tile to pick up changes.
         tile.updateTile();
     }
 
