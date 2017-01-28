@@ -23,12 +23,11 @@ public class TorchUtils {
     public static boolean check(Context context){
         String outp = Executor("cat ~/sys/class/leds/led:torch_0/brightness");
         try {
-            int x = Integer.parseInt(outp);
-            if (x < 1) {
+            if (outp.length()==1) {
                 flash_on(context);
                 return true;
             }
-            if (x > 1) {
+            if (!(outp.length()==1)) {
                 flash_off(context);
             }
         }

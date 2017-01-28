@@ -13,19 +13,42 @@
     <Button
         android:text="Toggle Flashlight"
         android:layout_width="fill_parent"
-        android:layout_height="280dp"
+        android:layout_height="140dp"
         android:id="@+id/button1"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
+    <Button
+        android:text="SET TILE NAME"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:id="@+id/button2"
+        android:layout_below="@+id/editText1"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
     <TextView
         android:text="Contributors (xda usernames) -\nUmang96\nShayanism\nhichaam\n\nYou may use this as normal torch app or you can also use it as a tile in android quicksettings.\n\nAs of now, this app is only for Redmi Note 3 (kenzo).\nThis is not supposed to work on other devices.\n\nThis app needs root permission to work."
         android:textSize="13dp"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:layout_below="@+id/button1"
+        android:layout_below="@+id/button2"
         android:layout_marginTop="12dp"
         android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:maxLength="20"
+        android:inputType="textPersonName"
+        android:text="Flashlight"
+        android:ems="10"
+        android:id="@+id/editText1"
+        android:layout_below="@+id/button1"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
