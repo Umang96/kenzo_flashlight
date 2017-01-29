@@ -20,15 +20,19 @@ public class TorchUtils {
         RunAsRoot(c1, context);
     }
 
-    public static boolean check(Context context){
+    public static boolean check(Context context, int x){
         String outp = Executor("cat ~/sys/class/leds/led:torch_0/brightness");
         try {
             if (outp.length()==1) {
-                flash_on(context);
+                if(x==2) {
+                    flash_on(context);
+                }
                 return true;
             }
             if (!(outp.length()==1)) {
+                if(x==2) {
                 flash_off(context);
+            }
             }
         }
         catch(Exception e)

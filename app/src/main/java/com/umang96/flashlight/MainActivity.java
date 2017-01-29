@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
                                   @Override
                                   public void onClick(View v) {
                                         TorchUtils ob = new TorchUtils();
-                                        ob.check(getApplicationContext());
+                                        ob.check(getApplicationContext(),2);
                                   }
                               }
         );
