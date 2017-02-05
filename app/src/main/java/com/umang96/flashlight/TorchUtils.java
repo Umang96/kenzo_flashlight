@@ -20,19 +20,15 @@ public class TorchUtils {
         RunAsRoot(c1, context);
     }
 
-    public static boolean check(Context context, int x){
+    public static boolean check(Context context){
         String outp = Executor("cat ~/sys/class/leds/led:torch_0/brightness");
-        try {
+            try {
             if (outp.length()==1) {
-                if(x==2) {
                     flash_on(context);
-                }
                 return true;
             }
             if (!(outp.length()==1)) {
-                if(x==2) {
                 flash_off(context);
-            }
             }
         }
         catch(Exception e)
@@ -45,7 +41,7 @@ public class TorchUtils {
 
     public static String Executor(String command) {
         StringBuffer output = new StringBuffer();
-        Process p;
+        Process p=null;
         try {
             p = Runtime.getRuntime().exec(new String[] { "su", "-c", command });
             BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
@@ -77,4 +73,5 @@ public class TorchUtils {
                     Toast.LENGTH_SHORT).show();
         }
     }
+
 }

@@ -26,37 +26,30 @@ public class TorchTileService extends TileService {
     }
 
     private void updateTile(int x) {
+        boolean isActive = false;
 
-        boolean isActive = TorchUtils.check(this,1);
         if(x==2) {
-            isActive = TorchUtils.check(this,2);
+            isActive = TorchUtils.check(this);
         }
         Tile tile = this.getQsTile();
-        Icon newIcon,alticon;
+        Icon newIcon;
         int newState = Tile.STATE_ACTIVE;
 
         if (isActive) {
 
             newIcon = Icon.createWithResource(getApplicationContext(),
                     R.drawable.ic_signal_flashlight_disable);
-            alticon = Icon.createWithResource(getApplicationContext(),
-                    R.drawable.ic_signal_flashlight_enable);
 
 
         } else {
                     newIcon =
                             Icon.createWithResource(getApplicationContext(),
                                     R.drawable.ic_signal_flashlight_enable);
-            alticon = Icon.createWithResource(getApplicationContext(),
-                    R.drawable.ic_signal_flashlight_disable);
         }
 
         tile.setLabel(getTileName());
         if(x==2) {
             tile.setIcon(newIcon);
-        }
-        if(x==1) {
-            tile.setIcon(alticon);
         }
         tile.setState(newState);
         tile.updateTile();
